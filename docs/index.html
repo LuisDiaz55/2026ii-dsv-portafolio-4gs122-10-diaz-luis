@@ -1,24 +1,3 @@
-<!-- file: site/alumnos/apellidos-nombre/about-diaz-luis.html -->
-<!--
-  PLANTILLA DE PERFIL — HTML
-  ──────────────────────────────────────────────────────────────
-  ESTA ES LA PLANTILLA. No la edites: copia la carpeta completa
-  site/alumnos/apellidos-nombre/ y renómbrala con tus datos.
-
-  Qué editar en tu copia:
-    • Este comentario de la primera línea (la ruta debe ser la tuya).
-    • El <title> y el <link> a tu hoja de estilos.
-    • Nombre, tagline y todos los marcadores con la forma {{TEXTO}}.
-    • Las cuatro rutas de la fotografía (src y srcset).
-  Qué NO cambiar:
-    • Estructura (header / aside / main / footer).
-    • Rutas a los logos institucionales (../../assets/img/).
-
-  Nombres de archivo de tu copia, si te llamas Juan Pérez:
-    about-perez-juan.html
-    assets/css/about-perez-juan.css
-    assets/img/foto-perez-juan-{160,320,480,640}.webp
--->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -27,20 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Luis Diaz — Perfil</title>
 
-  <!-- CSS específico de esta página -->
+
   <link rel="stylesheet" href="./assets/css/about-diaz-luis.css" />
 
-  <!-- Descripción breve (práctica de metadatos/SEO) -->
   <meta name="description"
     content="Perfil de estudiante — Licenciatura en Desarrollo y Gestión de Software (UTP FISC Veraguas)" />
 </head>
 
 <body>
-  <!-- Contenedor principal (layout en Grid definido en el CSS) -->
   <div class="page-grid">
     <header class="header">
       <div class="titulos">
-        <!-- Navegación mínima (breadcrumb). Puedes añadir más tabs si el profe lo pide -->
         <div class="top-actions">
           <nav class="tabs-left" aria-label="Navegación">
             <a href="./modulos/index.html" class="tab-link is-active">
@@ -50,19 +26,19 @@
           </nav>
         </div>
 
-        <!-- EDITA: nombre y tagline -->
+
         <h1 class="nombre">Luis Diaz</h1>
         <p class="tagline">Título profesional o especialización</p>
       </div>
 
-      <!-- Logos institucionales (no cambiar rutas) -->
+
       <div class="logos">
         <img class="logo" src="././assets/img/logo-utp.svg" alt="Logo UTP" />
         <img class="logo" src="././assets/img/logo-fisc.svg" alt="Logo FISC" />
       </div>
     </header>
 
-    <!-- Columna izquierda (foto + contacto + habilidades) -->
+
     <aside class="sidebar">
       <figure class="perfil">
         <img src="./assets/img/foto-diaz-luis-480.webp" srcset="
@@ -95,7 +71,6 @@
         </ul>
       </section>
 
-      <!-- Añade o quita chips según tus tecnologías reales -->
       <section class="skills card">
         <h2>Habilidades</h2>
 
@@ -134,7 +109,6 @@
       </section>
     </aside>
 
-    <!-- Columna derecha (contenido principal) -->
     <main class="contenido">
       <section class="resumen card">
         <h2>Acerca de mí</h2>
@@ -143,7 +117,6 @@
           aprender tecnologías nuevas.</p>
       </section>
 
-      <!-- Duplica <article.proyecto> por cada proyecto -->
       <section class="proyectos card">
         <h2>Proyectos destacados</h2>
         <div class="proyectos-flex">
