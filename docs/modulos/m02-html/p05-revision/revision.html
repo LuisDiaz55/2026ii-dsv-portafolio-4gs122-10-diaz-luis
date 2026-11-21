@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+     Informe de revisión de ConSentidos
+     Práctica 5 · Secciones 2.10 y 2.11 de la Unidad 2.
+     Archivo base: completa las partes marcadas con comentarios y pon la
+     fecha real de tu revisión en los dos elementos time.
+     ===================================================================== -->
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+          script-src 'self';
+          style-src 'self' https://fonts.googleapis.com;
+          font-src https://fonts.gstatic.com;
+          img-src 'self';
+          media-src 'self';
+          object-src 'self';
+          frame-src 'self' https://www.openstreetmap.org;
+          base-uri 'self';
+          form-action 'self'">
+  <meta name="description"
+    content="Informe de revisión de seguridad y calidad del sitio de la Clínica Veterinaria ConSentidos.">
+  <meta name="author" content="Luis Díaz">
+  <title>Informe de revisión | Clínica Veterinaria ConSentidos</title>
+  <link rel="icon" href="assets/img/logo-consentidos.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/consentidos.css">
+</head>
+
+<body>
+  <a href="#contenido">Saltar al contenido</a>
+
+  <header id="inicio">
+    <img src="assets/img/logo-consentidos.svg" alt="" width="64" height="64">
+
+    <hgroup>
+      <h1>Informe de revisión</h1>
+      <p>Seguridad y calidad del sitio</p>
+    </hgroup>
+
+    <!-- Tus datos: siempre arriba, nunca en el pie -->
+    <p>
+      Luis Díaz<br>
+      4GS122-10
+    </p>
+  </header>
+
+  <nav aria-label="Navegación del sitio">
+    <h2>El sitio</h2>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="paginas/servicios.html">Servicios</a></li>
+      <li><a href="paginas/componentes.html">Guía de componentes</a></li>
+      <li><a href="paginas/tarifas.html">Tarifas</a></li>
+      <li><a href="paginas/cita.html">Solicitar cita</a></li>
+      <li><a href="paginas/test.html">Página de prueba</a></li>
+    </ul>
+  </nav>
+
+  <main id="contenido">
+
+    <p>
+      Revisión del sitio completo, hecha el
+      <time datetime="2026-11-20">20 de noviembre de 2026</time>. Se
+      comprobaron las seis páginas publicadas y este informe.
+    </p>
+
+    <!-- =================================================================
+         1. LA POLÍTICA DE SEGURIDAD DE CONTENIDOS
+         ================================================================= -->
+    <section id="csp">
+      <h2>Política de seguridad de contenidos</h2>
+
+      <p>
+        Todas las páginas declaran la misma política en una etiqueta <code>meta</code>, escrita justo
+        después del <code>viewport</code> y antes de la hoja de estilos. Empecé por
+        <code>default-src 'self'</code>, que bloquea todo lo que no sea del propio sitio, y fui abriendo
+        cada directiva solo cuando la consola mostró un recurso legítimo bloqueado: la tipografía de
+        Google Fonts y el mapa de OpenStreetMap.
+      </p>
+
+      <div tabindex="0" role="region" aria-labelledby="cap-csp">
+        <table>
+          <caption id="cap-csp">Directivas de la política y por qué están</caption>
+          <thead>
+            <tr>
+              <th scope="col">Directiva</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Por qué</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><code>default-src</code></th>
+              <td><code>'self'</code></td>
+              <td>Regla por defecto: solo recursos del propio sitio.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>script-src</code></th>
+              <td><code>'self'</code></td>
+              <td>Los dos scripts del sitio (<code>componentes.js</code> y <code>cita.js</code>) son archivos propios. No se permite código en línea.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>style-src</code></th>
+              <td><code>'self'</code> <code>https://fonts.googleapis.com</code></td>
+              <td>La hoja de estilos es propia, pero importa la tipografía desde Google Fonts.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>font-src</code></th>
+              <td><code>https://fonts.gstatic.com</code></td>
+              <td>Es el servidor desde el que Google entrega los archivos de la fuente.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>img-src</code></th>
+              <td><code>'self'</code></td>
+              <td>Las imágenes (logotipo e ilustración de Luna) están en <code>assets/img/</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>media-src</code></th>
+              <td><code>'self'</code></td>
+              <td>El audio y el video están en <code>assets/media/</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>object-src</code></th>
+              <td><code>'self'</code></td>
+              <td>El PDF de la guía de vacunación se incrusta con <code>object</code> y es un archivo propio.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>frame-src</code></th>
+              <td><code>'self'</code> <code>https://www.openstreetmap.org</code></td>
+              <td>Los <code>iframe</code>: la página de prueba, que es propia, y el mapa de OpenStreetMap.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>base-uri</code></th>
+              <td><code>'self'</code></td>
+              <td>Impide que alguien cambie la base de las rutas relativas con una etiqueta <code>base</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>form-action</code></th>
+              <td><code>'self'</code></td>
+              <td>El formulario de cita solo puede enviarse a este mismo sitio.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        La directiva <code>frame-ancestors</code>, que decide qué sitios pueden incrustar mi página en un
+        <code>iframe</code> y por tanto defiende del clickjacking, no funciona dentro de una etiqueta
+        <code>meta</code>: solo se acepta como cabecera HTTP, y esa cabecera la configura el servidor.
+        GitHub Pages no permite configurar cabeceras, así que en este sitio esa protección no está activa.
+        En un servidor Apache se activaría con <code>Header set Content-Security-Policy "frame-ancestors 'none'"</code>
+        en el archivo <code>.htaccess</code>.
+      </p>
+    </section>
+
+    <!-- =================================================================
+         2. LA LISTA DE VERIFICACIÓN DE LA SECCIÓN 2.11.4
+         ================================================================= -->
+    <section id="verificacion">
+      <h2>Lista de verificación</h2>
+
+      <div tabindex="0" role="region" aria-labelledby="cap-verificacion">
+        <table>
+          <caption id="cap-verificacion">Comprobaciones en las siete páginas</caption>
+          <thead>
+            <tr>
+              <th scope="col">Comprobación</th>
+              <th scope="col">Resultado</th>
+              <th scope="col">Observación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Validan sin errores en validator.w3.org</th>
+              <td>Pendiente</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Un solo <code>h1</code> y jerarquía sin saltos</th>
+              <td>Cumple</td>
+              <td>Las siete páginas tienen un solo <code>h1</code> y los encabezados bajan de un nivel a la vez.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>alt</code> en las imágenes y <code>title</code> en los <code>iframe</code></th>
+              <td>Cumple</td>
+              <td>El logotipo es decorativo y lleva <code>alt</code> vacío a propósito; la ilustración de Luna tiene <code>alt</code> descriptivo y los dos <code>iframe</code> llevan <code>title</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row">Cada control con <code>label</code> y <code>name</code></th>
+              <td>Cumple</td>
+              <td>En <code>cita.html</code> todos los controles visibles tienen su <code>label</code> con <code>for</code> + <code>id</code>, y todos los que se envían llevan <code>name</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row">Tablas con <code>caption</code> y <code>scope</code></th>
+              <td>Cumple</td>
+              <td>Las cinco tablas (tres en <code>tarifas.html</code> y dos en este informe) tienen <code>caption</code> y <code>scope</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row">Enlaces a otra pestaña con <code>rel="noopener noreferrer"</code></th>
+              <td>Cumple</td>
+              <td>El enlace al MIDA, en la portada y en la guía de componentes, lleva <code>rel="noopener noreferrer"</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row">Recorrido completo con el teclado y foco visible</th>
+              <td>Pendiente</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Nombres en minúsculas y rutas que funcionan publicadas</th>
+              <td>Cumple</td>
+              <td>Los archivos y carpetas van en minúsculas, sin espacios ni tildes.</td>
+            </tr>
+            <tr>
+              <th scope="row">Consola sin errores de la política</th>
+              <td>Pendiente</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Accesibilidad en Lighthouse</th>
+              <td>Pendiente</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         3. LA DEMOSTRACIÓN DEL REQUIRED
+         ================================================================= -->
+    <section id="validacion-cliente">
+      <h2>La validación del navegador no protege</h2>
+
+      <p>
+        En <code>cita.html</code> envié el formulario vacío y el navegador lo detuvo. Después, desde las
+        herramientas de desarrollo, borré el atributo <code>required</code> del campo del correo, dejé el
+        correo vacío y el formulario salió sin ese dato. Repetí la prueba cambiando el
+        <code>value</code> del campo <code>hidden</code> en el inspector y el valor alterado viajó como si
+        fuera el original. Concluyo que <code>required</code>, <code>pattern</code>, <code>min</code> o
+        <code>type="email"</code> solo ayudan a quien llena el formulario a no equivocarse: cualquiera puede
+        modificarlos, así que la validación que protege los datos tiene que hacerse siempre en el servidor.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <address>
+      <strong>Clínica Veterinaria ConSentidos</strong><br>
+      Avenida Central, Santiago de Veraguas, Panamá<br>
+      <a href="tel:+50799800000">+507 998-0000</a> |
+      <a href="mailto:citas@consentidos.example">citas@consentidos.example</a>
+    </address>
+
+    <p>
+      Última actualización:
+      <time datetime="2026-11-20">20 de noviembre de 2026</time>.
+    </p>
+
+    <p><a href="#inicio">Volver arriba</a></p>
+
+    <p>
+      <small>
+        &copy; 2026 Clínica Veterinaria ConSentidos. Proyecto académico del
+        curso Desarrollo de Software V, Universidad Tecnológica de Panamá,
+        Centro Regional de Veraguas. Los datos de contacto son ficticios.
+      </small>
+    </p>
+  </footer>
+</body>
+
+</html>
